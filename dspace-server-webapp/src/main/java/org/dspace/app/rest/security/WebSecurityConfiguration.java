@@ -80,6 +80,23 @@ public class WebSecurityConfiguration {
     }
 
     /**
+     * Security filter chain to permit access to Springdoc/Swagger endpoints.
+     * Ensures that API docs and Swagger UI are publicly accessible when
+     * springdoc is on the classpath.
+     *
+     * @param http HttpSecurity
+     * @return SecurityFilterChain that permits /v3/api-docs/** and /swagger-ui/**
+     * @throws Exception on configuration error
+     */
+    @Bean
+    public SecurityFilterChain springdocFilterChain(HttpSecurity http) throws Exception {
+        http.securityMatcher("/v3/api-docs/**", "/swagger-ui/**")
+            .authorizeHttpRequests((requests) -> requests.anyRequest().permitAll())
+            .csrf((csrf) -> csrf.disable());
+        return http.build();
+    }
+
+    /**
      * Bean to customize security on specific endpoints
      * @param http HttpSecurity
      */
