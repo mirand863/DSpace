@@ -19,7 +19,6 @@ import java.util.stream.Collectors;
 
 import org.apache.commons.lang3.ArrayUtils;
 import org.apache.commons.lang3.StringUtils;
-import org.apache.commons.lang3.Strings;
 import org.apache.logging.log4j.Logger;
 import org.dspace.app.util.DCInput;
 import org.dspace.app.util.DCInputSet;
@@ -338,7 +337,7 @@ public final class ChoiceAuthorityServiceImpl implements ChoiceAuthorityService 
                             // or an xml vocabulary
                             String authorityName = null;
                             if (StringUtils.isNotBlank(dcinput.getPairsType())
-                                    && !Strings.CS.equals(dcinput.getInputType(), "qualdrop_value")) {
+                                    && !StringUtils.equals(dcinput.getInputType(), "qualdrop_value")) {
                                 authorityName = dcinput.getPairsType();
                             } else if (StringUtils.isNotBlank(dcinput.getVocabulary())) {
                                 authorityName = dcinput.getVocabulary();
@@ -578,7 +577,7 @@ public final class ChoiceAuthorityServiceImpl implements ChoiceAuthorityService 
                 }
                 for (Map.Entry<String, List<String>> formToField : formsToFields.entrySet()) {
                     metadataFields.addAll(formToField.getValue().stream().map(value ->
-                                    Strings.CS.replace(value, "_", "."))
+                                    StringUtils.replace(value, "_", "."))
                             .collect(Collectors.toList()));
                 }
                 DiscoverySearchFilterFacet matchingFacet = null;

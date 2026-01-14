@@ -21,7 +21,6 @@ import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.apache.commons.collections.CollectionUtils;
 import org.apache.commons.lang3.StringUtils;
-import org.apache.commons.lang3.Strings;
 import org.apache.http.client.utils.URIBuilder;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -211,7 +210,7 @@ public class RorImportMetadataSourceServiceImpl extends AbstractImportMetadataSo
 
         List<ImportRecord> importResults = new ArrayList<>();
 
-        id = Strings.CS.removeStart(id, ROR_IDENTIFIER_PREFIX);
+        id = StringUtils.removeStart(id, ROR_IDENTIFIER_PREFIX);
 
         try {
             Map<String, Map<String, String>> params = new HashMap<String, Map<String, String>>();

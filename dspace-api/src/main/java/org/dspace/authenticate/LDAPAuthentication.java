@@ -34,7 +34,6 @@ import javax.naming.ldap.StartTlsResponse;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import org.apache.commons.lang3.StringUtils;
-import org.apache.commons.lang3.Strings;
 import org.apache.logging.log4j.Logger;
 import org.dspace.authenticate.factory.AuthenticateServiceFactory;
 import org.dspace.authenticate.service.AuthenticationService;
@@ -536,7 +535,7 @@ public class LDAPAuthentication implements AuthenticationMethod {
                             resultDN = (sr.getName() + "," + ldap_search_context);
                         }
 
-                        String[] attlist = {ldap_email_field, ldap_givenname_field,
+                        String attlist[] = {ldap_email_field, ldap_givenname_field,
                             ldap_surname_field, ldap_phone_field, ldap_group_field};
                         Attributes atts = sr.getAttributes();
                         Attribute att;
@@ -744,12 +743,12 @@ public class LDAPAuthentication implements AuthenticationMethod {
             // groupmap contains the mapping of LDAP groups to DSpace groups
             // outer loop with the DSpace groups
             while (groupMap != null) {
-                String[] t = groupMap.split(":");
+                String t[] = groupMap.split(":");
                 String ldapSearchString = t[0];
                 String dspaceGroupName = t[1];
 
                 if (group == null) {
-                    cmp = Strings.CI.contains(dn, ldapSearchString + ",");
+                    cmp = StringUtils.containsIgnoreCase(dn, ldapSearchString + ",");
 
                     if (cmp) {
                         assignGroup(context, groupmapIndex, dspaceGroupName);
@@ -765,9 +764,9 @@ public class LDAPAuthentication implements AuthenticationMethod {
 
                         // very much the old code from DSpace <= 7.5
                         if (currentGroup == null) {
-                            cmp = Strings.CI.contains(dn, ldapSearchString + ",");
+                            cmp = StringUtils.containsIgnoreCase(dn, ldapSearchString + ",");
                         } else {
-                            cmp = Strings.CI.equals(currentGroup, ldapSearchString);
+                            cmp = StringUtils.equalsIgnoreCase(currentGroup, ldapSearchString);
                         }
 
                         if (cmp) {

@@ -30,7 +30,7 @@ services:
       # from the host machine. This IP range MUST correspond to the 'dspacenet' subnet defined above.
       proxies__P__trusted__P__ipranges: '172.23.0'
       LOGGING_CONFIG: /dspace/config/log4j2-container.xml
-    image: "${DOCKER_REGISTRY:-docker.io}/${DOCKER_OWNER:-dspace}/dspace:${DSPACE_VER:-latest-test}"
+    image: "${DOCKER_REGISTRY:-docker.io}/${DOCKER_OWNER:-dspace}/dspace:${DSPACE_VER:-dspace-9_x-test}"
     build:
       context: .
       dockerfile: Dockerfile.test
@@ -39,7 +39,7 @@ services:
     networks:
       - dspacenet
     ports:
-    - published: ${DSPACE_PORT:-8080}
+    - published: 8080
       target: 8080
     - published: 8000
       target: 8000
@@ -85,7 +85,7 @@ services:
   # DSpace Solr container
   dspacesolr:
     container_name: dspacesolr
-    image: "${DOCKER_REGISTRY:-docker.io}/${DOCKER_OWNER:-dspace}/dspace-solr:${DSPACE_VER:-latest}"
+    image: "${DOCKER_REGISTRY:-docker.io}/${DOCKER_OWNER:-dspace}/dspace-solr:${DSPACE_VER:-dspace-9_x}"
     build:
       context: ./dspace/src/main/docker/dspace-solr/
       # Provide path to Solr configs necessary to build Docker image
@@ -130,8 +130,6 @@ services:
       cp -r /opt/solr/server/solr/configsets/qaevent/* qaevent
       precreate-core suggestion /opt/solr/server/solr/configsets/suggestion
       cp -r /opt/solr/server/solr/configsets/suggestion/* suggestion
-      precreate-core audit /opt/solr/server/solr/configsets/audit
-      cp -r /opt/solr/server/solr/configsets/audit/* audit
       chown -R solr:solr /var/solr
       runuser -u solr -- solr-foreground
 volumes:

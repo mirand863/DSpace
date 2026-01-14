@@ -19,7 +19,6 @@ import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.FactoryConfigurationError;
 
 import org.apache.commons.lang3.StringUtils;
-import org.apache.commons.lang3.Strings;
 import org.apache.logging.log4j.Logger;
 import org.dspace.content.Collection;
 import org.dspace.content.Community;
@@ -332,7 +331,7 @@ public class SubmissionConfigReader {
         log.debug("Submission process config '" + submitName
                       + "' not in cache. Reloading from scratch.");
 
-        lastSubmissionConfig = new SubmissionConfig(Strings.CS.equals(getDefaultSubmissionConfigName(), submitName),
+        lastSubmissionConfig = new SubmissionConfig(StringUtils.equals(getDefaultSubmissionConfigName(), submitName),
                                                     submitName, steps);
 
         log.debug("Submission process config has "
@@ -471,7 +470,7 @@ public class SubmissionConfigReader {
         for (int i = 0; i < len; i++) {
             Node nd = nl.item(i);
             // process each step definition
-            if (Strings.CI.equals(nd.getNodeName(), "step-definition")) {
+            if (StringUtils.equalsIgnoreCase(nd.getNodeName(), "step-definition")) {
                 String stepID = getAttribute(nd, "id");
                 if (stepID == null) {
                     throw new SAXException(

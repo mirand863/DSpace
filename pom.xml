@@ -4,7 +4,7 @@
     <groupId>org.dspace</groupId>
     <artifactId>dspace-parent</artifactId>
     <packaging>pom</packaging>
-    <version>10.0-SNAPSHOT</version>
+    <version>9.2</version>
     <name>DSpace Parent Project</name>
     <description>
    	DSpace open source software is a turnkey institutional repository application.
@@ -49,7 +49,7 @@
         <!-- WARNING: BouncyCastle is also required by the maven-gpg-plugin to sign code during release. Do not update
              unless the new BouncyCastle version is compatible both with tika-parsers and maven-gpg-plugin. -->
         <bouncycastle.version>1.81</bouncycastle.version>
-        <asm.version>9.9</asm.version>
+        <asm.version>8.0.1</asm.version>
         <!-- Jersey is used to integrate with external sources/services -->
         <jersey.version>3.1.11</jersey.version>
         <!--=== SERVER WEBAPP DEPENDENCIES ===-->
@@ -745,7 +745,7 @@
                                         <!-- JBoss Transaction API claims this license, but it is dual licensed with CDDL being one: https://github.com/jboss/jboss-transaction-api_spec -->
                                         <licenseMerge>Common Development and Distribution License (CDDL)|GNU General Public License, Version 2 with the Classpath Exception</licenseMerge>
                                         <licenseMerge>Eclipse Distribution License, Version 1.0|Eclipse Distribution License (EDL), Version 1.0|Eclipse Distribution License - v 1.0|Eclipse Distribution License v. 1.0|EDL 1.0</licenseMerge>
-                                        <licenseMerge>Eclipse Public License|Eclipse Public License - Version 1.0|Eclipse Public License - v 1.0|EPL 1.0 license|Eclipse Public License (EPL), Version 1.0|Eclipse Public License 1.0|Eclipse Public License v1.0|Eclipse Public License, Version 1.0|EPL 1.0|EPL 2.0|Eclipse Public License - v 2.0|EPL-2.0|Eclipse Public License 2.0|Eclipse Public License v. 2.0|Eclipse Public License, Version 2.0</licenseMerge>
+                                        <licenseMerge>Eclipse Public License|Eclipse Public License - Version 1.0|Eclipse Public License - v 1.0|EPL 1.0 license|Eclipse Public License (EPL), Version 1.0|Eclipse Public License 1.0|Eclipse Public License v1.0|Eclipse Public License, Version 1.0|EPL 1.0|EPL 2.0|Eclipse Public License - v 2.0|EPL-2.0|Eclipse Public License 2.0|Eclipse Public License v. 2.0|Eclipse Public License, Version 2.0|Eclipse Public License v2.0</licenseMerge>
                                         <!-- JUnit claims this license but is actually Eclipse Public License: http://junit.org/license.html -->
                                         <licenseMerge>Eclipse Public License|Common Public License Version 1.0</licenseMerge>
                                         <!-- Jersey is dual licensed as EPL but lists its main license as GPL: https://github.com/eclipse-ee4j/jersey#licensing-and-governance -->
@@ -1036,128 +1036,73 @@
             <dependency>
                 <groupId>org.dspace</groupId>
                 <artifactId>dspace-api</artifactId>
-                <version>10.0-SNAPSHOT</version>
+                <version>9.2</version>
             </dependency>
             <dependency>
                 <groupId>org.dspace</groupId>
                 <artifactId>dspace-api</artifactId>
                 <type>test-jar</type>
-                <version>10.0-SNAPSHOT</version>
+                <version>9.2</version>
                 <scope>test</scope>
             </dependency>
             <dependency>
                 <groupId>org.dspace.modules</groupId>
                 <artifactId>additions</artifactId>
-                <version>10.0-SNAPSHOT</version>
+                <version>9.2</version>
             </dependency>
             <dependency>
                 <groupId>org.dspace.modules</groupId>
                 <artifactId>server</artifactId>
                 <classifier>classes</classifier>
-                <version>10.0-SNAPSHOT</version>
+                <version>9.2</version>
             </dependency>
 
             <dependency>
                 <groupId>org.dspace</groupId>
                 <artifactId>dspace-sword</artifactId>
-                <version>10.0-SNAPSHOT</version>
+                <version>9.2</version>
             </dependency>
             <dependency>
                 <groupId>org.dspace</groupId>
                 <artifactId>dspace-swordv2</artifactId>
-                <version>10.0-SNAPSHOT</version>
+                <version>9.2</version>
             </dependency>
             <dependency>
                 <groupId>org.dspace</groupId>
                 <artifactId>dspace-oai</artifactId>
-                <version>10.0-SNAPSHOT</version>
+                <version>9.2</version>
             </dependency>
             <dependency>
                 <groupId>org.dspace</groupId>
                 <artifactId>dspace-services</artifactId>
-                <version>10.0-SNAPSHOT</version>
+                <version>9.2</version>
             </dependency>
             <dependency>
                 <groupId>org.dspace</groupId>
                 <artifactId>dspace-server-webapp</artifactId>
                 <type>test-jar</type>
-                <version>10.0-SNAPSHOT</version>
+                <version>9.2</version>
                 <scope>test</scope>
             </dependency>
             <dependency>
                 <groupId>org.dspace</groupId>
                 <artifactId>dspace-rdf</artifactId>
-                <version>10.0-SNAPSHOT</version>
+                <version>9.2</version>
             </dependency>
             <dependency>
                 <groupId>org.dspace</groupId>
                 <artifactId>dspace-saml2</artifactId>
-                <version>10.0-SNAPSHOT</version>
+                <version>9.2</version>
             </dependency>
             <dependency>
                 <groupId>org.dspace</groupId>
                 <artifactId>dspace-iiif</artifactId>
-                <version>10.0-SNAPSHOT</version>
+                <version>9.2</version>
             </dependency>
             <dependency>
                 <groupId>org.dspace</groupId>
                 <artifactId>dspace-server-webapp</artifactId>
-                <version>10.0-SNAPSHOT</version>
-            </dependency>
-
-            <!-- Dependency convergence fixes (global for entire build/reactor) -->
-            <dependency>
-                <groupId>io.swagger.core.v3</groupId>
-                <artifactId>swagger-annotations-jakarta</artifactId>
-                <version>2.2.38</version>
-            </dependency>
-            <dependency>
-                <groupId>io.swagger.core.v3</groupId>
-                <artifactId>swagger-core-jakarta</artifactId>
-                <version>2.2.38</version>
-            </dependency>
-            <dependency>
-                <groupId>io.swagger.core.v3</groupId>
-                <artifactId>swagger-integration-jakarta</artifactId>
-                <version>2.2.38</version>
-            </dependency>
-            <dependency>
-                <groupId>io.swagger.core.v3</groupId>
-                <artifactId>swagger-models-jakarta</artifactId>
-                <version>2.2.38</version>
-            </dependency>
-            <dependency>
-                <groupId>io.swagger.core.v3</groupId>
-                <artifactId>swagger-jaxrs2-jakarta</artifactId>
-                <version>2.2.38</version>
-            </dependency>
-
-            <dependency>
-                <groupId>org.springframework.boot</groupId>
-                <artifactId>spring-boot-autoconfigure</artifactId>
-                <version>${spring-boot.version}</version>
-            </dependency>
-
-            <dependency>
-                <groupId>org.yaml</groupId>
-                <artifactId>snakeyaml</artifactId>
-                <version>2.4</version>
-            </dependency>
-
-            <dependency>
-                <groupId>com.fasterxml.jackson.jakarta.rs</groupId>
-                <artifactId>jackson-jakarta-rs-base</artifactId>
-                <version>2.19.2</version>
-            </dependency>
-            <dependency>
-                <groupId>com.fasterxml.jackson.jakarta.rs</groupId>
-                <artifactId>jackson-jakarta-rs-providers</artifactId>
-                <version>2.19.2</version>
-            </dependency>
-            <dependency>
-                <groupId>com.fasterxml.jackson.jakarta.rs</groupId>
-                <artifactId>jackson-jakarta-rs-json-provider</artifactId>
-                <version>2.19.2</version>
+                <version>9.2</version>
             </dependency>
             <!-- DSpace API Localization Packages -->
             <dependency>
@@ -1358,12 +1303,6 @@
                 <groupId>org.apache.solr</groupId>
                 <artifactId>solr-solrj</artifactId>
                 <version>${solr.client.version}</version>
-                <exclusions>
-                    <exclusion>  <!-- declare the exclusion here -->
-                        <groupId>org.apache.logging.log4j</groupId>
-                        <artifactId>log4j-slf4j-impl</artifactId>
-                    </exclusion>
-                </exclusions>
             </dependency>
             <dependency>
                 <groupId>org.apache.lucene</groupId>
@@ -2004,7 +1943,7 @@
         <connection>scm:git:git@github.com:DSpace/DSpace.git</connection>
         <developerConnection>scm:git:git@github.com:DSpace/DSpace.git</developerConnection>
         <url>https://github.com/DSpace/DSpace</url>
-        <tag>HEAD</tag>
+        <tag>dspace-9.2</tag>
     </scm>
 
     <repositories>

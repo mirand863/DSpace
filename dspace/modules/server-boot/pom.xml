@@ -11,7 +11,7 @@
     <parent>
         <artifactId>modules</artifactId>
         <groupId>org.dspace</groupId>
-        <version>10.0-SNAPSHOT</version>
+        <version>9.2</version>
         <relativePath>..</relativePath>
     </parent>
 
@@ -94,10 +94,6 @@
                     <groupId>org.apache.commons</groupId>
                     <artifactId>commons-text</artifactId>
                 </exclusion>
-                <exclusion>
-                    <groupId>org.apache.logging.log4j</groupId>
-                    <artifactId>log4j-slf4j-impl</artifactId>
-                </exclusion>
             </exclusions>
         </dependency>
         <dependency>
@@ -125,4 +121,8 @@
         </plugins>
     </build>
 
+
+  <scm>
+    <tag>dspace-9.2</tag>
+  </scm>
 </project>
